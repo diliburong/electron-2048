@@ -5,6 +5,7 @@
               <div class="logo">
                   <img src="../../assets/icon.png" alt="">
               </div>
+              
           </div>
           <div class="column column-50 align-right">
               <router-link to="/game">Play</router-link>

@@ -59,12 +59,7 @@
         this.count += 1
       }
     },
-    created () {
-      console.log('123')
-      window.addEventListener('keydown', (e) => {
-        console.log(e.keyCode)
-      })
-    }
+    created () {}
   }
 </script>
 

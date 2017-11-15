@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <topbar></topbar>
-    <router-view></router-view>
+    <main>
+      <router-view></router-view>
+    </main>
   </div>
 </template>
 
@@ -16,5 +18,7 @@
 </script>
 
 <style>
-  /* CSS */
+  main {
+    padding: 30px 30px 30px 30px;
+  }
 </style>
