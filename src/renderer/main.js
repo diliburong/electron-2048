@@ -4,9 +4,6 @@ import App from './App'
 import router from './router'
 import Vuex from 'vuex'
 import store from './store'
-import MuseUI from 'muse-ui'
-import 'muse-ui/dist/muse-ui.css'
-Vue.use(MuseUI)
 Vue.use(Vuex)
 
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))

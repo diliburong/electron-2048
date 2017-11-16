@@ -40,10 +40,16 @@
             </div>
         </div>
         <div class="" id="number-stage">
-          <div class="number-cell"></div>
-          <div class="number-cell"></div>
-          <div class="number-cell"></div>
-          <div class="number-cell"></div>
+          <div class="number-cell"><div v-if="board[0][0] != 0">{{board[0][0]}}</div></div>
+          <div class="number-cell" id="cell2">
+            <div v-if="board[0][1] != 0">{{board[0][1]}}</div>
+          </div>
+          <div class="number-cell">
+            <div v-if="board[0][2] != 0">{{board[0][2]}}</div>
+          </div>
+          <div class="number-cell">
+            <div v-if="board[0][3] != 0">{{board[0][3]}}</div>
+          </div>
 
           <div class="number-cell"></div>
           <div class="number-cell"></div>
@@ -77,10 +83,17 @@
 </template>
 
 <script>
+  import { noSpace } from './support.js'
   export default {
     data () {
       return {
-        score: 0
+        board:
+        [
+          [0, 2, 4, 0],
+          [0, 0, 0, 2],
+          [4, 0, 0, 0],
+          [0, 0, 0, 0]
+        ]
       }
     },
     computed: {
@@ -115,6 +128,7 @@
       }
     },
     created () {
+      noSpace(this.board)
       window.addEventListener('keydown', (e) => {
         this.buttonPressed(e.keyCode)
       })
@@ -135,6 +149,7 @@
       justify-content: space-between;
       flex-wrap: wrap;
       align-content: space-between;
+      border-radius: 10px;
     }
     #number-stage {
       height: 520px;
@@ -157,9 +172,15 @@
     }
 
     .number-cell {
+      position: relative;
       width: 100px;
       height: 100px;
       border-radius: 6px;
+      font-size: 60px;
+      text-align: center;
+      line-height: 100px;
+      font-family: Arial;
+      font-weight: bold;
     }
     
 </style>
