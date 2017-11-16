@@ -19,13 +19,8 @@ export default {
       })
     },
     greet: function (event) {
-      alert('hellp' + this.name)
+      console.log(event)
     }
-  },
-  created () {
-    window.addEventListener('keydown', (e) => {
-      this.changeAnimation(this.$refs.test)
-    })
   }
 }
 </script>
