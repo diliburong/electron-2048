@@ -4,25 +4,63 @@
 
     <div class="row">
       <div class="column column-75 game">
-        <div class="" id="stage">
-            <div class="grid-cell"></div>
-            <div class="grid-cell"></div>
-            <div class="grid-cell"></div>
-            <div class="grid-cell"></div>       
-            <div class="grid-cell"></div>    
-            <div class="grid-cell"></div>
-            <div class="grid-cell"></div> 
-            <div class="grid-cell"></div> 
-            <div class="grid-cell"></div>          
-            <div class="grid-cell"></div> 
-            <div class="grid-cell"></div>
-            <div class="grid-cell"></div> 
-            <div class="grid-cell"></div> 
-            <div class="grid-cell"></div> 
-            <div class="grid-cell"></div>
-            <div class="grid-cell"></div> 
 
+        <div class="" id="stage">
+            <div class="grid-cell">
+            </div>
+            <div class="grid-cell">
+            </div>
+            <div class="grid-cell">
+            </div>
+            <div class="grid-cell">
+            </div>       
+            <div class="grid-cell">
+            </div>    
+            <div class="grid-cell">
+            </div>
+            <div class="grid-cell">
+            </div> 
+            <div class="grid-cell">
+            </div>
+            <div class="grid-cell">
+            </div>      
+            <div class="grid-cell">
+            </div> 
+            <div class="grid-cell">
+            </div>
+            <div class="grid-cell">
+            </div> 
+            <div class="grid-cell">
+            </div>
+            <div class="grid-cell">
+            </div> 
+            <div class="grid-cell">
+            </div>
+            <div class="grid-cell">
+            </div>
         </div>
+        <div class="" id="number-stage">
+          <div class="number-cell"></div>
+          <div class="number-cell"></div>
+          <div class="number-cell"></div>
+          <div class="number-cell"></div>
+
+          <div class="number-cell"></div>
+          <div class="number-cell"></div>
+          <div class="number-cell"></div>
+          <div class="number-cell"></div>
+
+          <div class="number-cell"></div>
+          <div class="number-cell"></div>
+          <div class="number-cell"></div>
+          <div class="number-cell"></div>
+
+          <div class="number-cell"></div>
+          <div class="number-cell"></div>
+          <div class="number-cell"></div>
+          <div class="number-cell"></div>
+        </div>
+
       </div>
 
 
@@ -42,7 +80,7 @@
   export default {
     data () {
       return {
-        count: 0
+        score: 0
       }
     },
     computed: {
@@ -53,11 +91,27 @@
     name: 'landing-page',
     components: { },
     methods: {
+      init: function () {},
       open (link) {
         this.$electron.shell.openExternal(link)
       },
       buttonPressed: function (key) {
-        console.log(key)
+        switch (key) {
+          case 37:// left
+            console.log('left')
+            break
+          case 38:// up
+            console.log('up')
+            break
+          case 39:// right
+            console.log('right')
+            break
+          case 40:
+            console.log('down')
+            break
+          default:
+            break
+        }
       }
     },
     created () {
@@ -82,12 +136,30 @@
       flex-wrap: wrap;
       align-content: space-between;
     }
+    #number-stage {
+      height: 520px;
+      width: 520px;
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-content: space-between;
+      position: absolute;
+      top: 0;
+    }
+
     .grid-cell {
       width: 100px;
       height: 100px;
       border-radius: 6px;
       background-color: #ccc0b3;
       padding: 0;
+    }
+
+    .number-cell {
+      width: 100px;
+      height: 100px;
+      border-radius: 6px;
     }
     
 </style>
