@@ -105,10 +105,9 @@
     components: { },
     methods: {
       init: function () {},
-      buttonPressed: function (key) {
+      buttonPressed: function () {
         var evt = window.event
-        console.log(evt.keyCode)
-        switch (key) {
+        switch (evt.keyCode) {
           case 37:// left
             console.log('left')
             break
