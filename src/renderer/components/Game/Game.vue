@@ -105,10 +105,9 @@
     components: { },
     methods: {
       init: function () {},
-      open (link) {
-        this.$electron.shell.openExternal(link)
-      },
       buttonPressed: function (key) {
+        var evt = window.event
+        console.log(evt.keyCode)
         switch (key) {
           case 37:// left
             console.log('left')
@@ -129,9 +128,12 @@
     },
     created () {
       noSpace(this.board)
-      window.addEventListener('keydown', (e) => {
-        this.buttonPressed(e.keyCode)
-      })
+    },
+    activated () {
+      window.addEventListener('keydown', this.buttonPressed, false)
+    },
+    deactivated () {
+      window.removeEventListener('keydown', this.buttonPressed, false)
     }
   }
 </script>
