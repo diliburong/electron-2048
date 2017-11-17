@@ -15,7 +15,7 @@ export default {
     changeAnimation: function (event) {
       snabbt(event, {
         position: [100, 0, 0],
-        easing: 'ease'
+        easing: 'easeIn'
       })
     },
     greet: function (event) {
