@@ -108,6 +108,7 @@
     },
     methods: {
       init: function () {},
+<<<<<<< HEAD
       abc: function () {
         var randNumber = Math.random() < 0.5 ? 4 : 8
         this.$set(this.board[0], 1, randNumber)
@@ -123,6 +124,13 @@
         switch (evt.keyCode) {
           case 37:
             this.abc()
+=======
+      buttonPressed: function () {
+        var evt = window.event
+        switch (evt.keyCode) {
+          case 37:// left
+            console.log('left')
+>>>>>>> 1a6e1151b58221d070ec036aaa9fd506bc59db12
             break
           case 38:// up
             this.bbb()
