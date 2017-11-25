@@ -40,40 +40,38 @@
             </div>
         </div>
         <div class="" id="number-stage">
-          <div class="number-cell"><div v-if="board[0][0] != 0">{{board[0][0]}}</div></div>
-          <div class="number-cell" id="cell2">
-            <div v-if="board[0][1] != 0">{{board[0][1]}}</div>
-          </div>
-          <div class="number-cell">
-            <div v-if="board[0][2] != 0">{{board[0][2]}}</div>
-          </div>
-          <div class="number-cell">
-            <div v-if="board[0][3] != 0">{{board[0][3]}}</div>
-          </div>
+          <number-cell v-bind:cell-number="board[0][0]">
+          </number-cell>
+          <number-cell v-bind:cell-number="board[0][1]">
+          </number-cell>
+          <number-cell v-bind:cell-number="board[0][2]">
+            
+          </number-cell>
+          <number-cell v-bind:cell-number="board[0][3]"></number-cell>
 
-          <div class="number-cell"></div>
-          <div class="number-cell"></div>
-          <div class="number-cell"></div>
-          <div class="number-cell"></div>
+          <number-cell v-bind:cell-number="board[1][0]"></number-cell>
+          <number-cell v-bind:cell-number="board[1][1]"></number-cell>
+          <number-cell v-bind:cell-number="board[1][2]"></number-cell>
+          <number-cell v-bind:cell-number="board[1][3]"></number-cell>
+ 
+          <number-cell v-bind:cell-number="board[2][0]"></number-cell>
+          <number-cell v-bind:cell-number="board[2][1]"></number-cell>
+          <number-cell v-bind:cell-number="board[2][2]"></number-cell>
+          <number-cell v-bind:cell-number="board[2][3]"></number-cell>
 
-          <div class="number-cell"></div>
-          <div class="number-cell"></div>
-          <div class="number-cell"></div>
-          <div class="number-cell"></div>
-
-          <div class="number-cell"></div>
-          <div class="number-cell"></div>
-          <div class="number-cell"></div>
-          <div class="number-cell"></div>
+          <number-cell v-bind:cell-number="board[3][0]"></number-cell>
+          <number-cell v-bind:cell-number="board[3][1]"></number-cell>
+          <number-cell v-bind:cell-number="board[3][2]"></number-cell>
+          <number-cell v-bind:cell-number="board[3][3]"></number-cell>
         </div>
-
       </div>
-
+      
 
       <div class="column column-25 sider-wrapper">
         <div class="siderbar align-center align-items-center">
-          <h2>33</h2>
-
+          <h2>{{message}}</h2>
+          <h3>{{board}}</h3>
+          <button @click="abc()">333</button>
         </div>
 
       </div>  
@@ -83,17 +81,20 @@
 </template>
 
 <script>
-  import { noSpace } from './support.js'
+  import NumberCell from '@/components/NumberCell/NumberCell'
+  import { noSpace } from 'common/js/support.js'
   export default {
     data () {
       return {
+        message: '123',
         board:
         [
-          [0, 2, 4, 0],
+          [0, 2, 16, 0],
           [0, 0, 0, 2],
           [4, 0, 0, 0],
           [0, 0, 0, 0]
-        ]
+        ],
+        row1: [0, 2, 16, 0]
       }
     },
     computed: {
@@ -101,19 +102,30 @@
         return this.$store.state.Counter.main
       }
     },
-    name: 'landing-page',
-    components: { },
+    name: 'Game',
+    components: {
+      NumberCell
+    },
     methods: {
       init: function () {},
+      abc: function () {
+        var randNumber = Math.random() < 0.5 ? 4 : 8
+        this.$set(this.board[0], 1, randNumber)
+        // this.board[0][1] = randNumber
+        // this.board = [[0, randNumber, 16, 0], [0, 0, 0, 2], [4, 0, 0, 0], [0, 0, 0, 0]]
+      },
+      bbb: function () {
+        this.board[0][3] = 2
+      },
       buttonPressed: function (key) {
         var evt = window.event
         console.log(evt.keyCode)
-        switch (key) {
-          case 37:// left
-            console.log('left')
+        switch (evt.keyCode) {
+          case 37:
+            this.abc()
             break
           case 38:// up
-            console.log('up')
+            this.bbb()
             break
           case 39:// right
             console.log('right')
@@ -127,7 +139,7 @@
       }
     },
     created () {
-      noSpace(this.board)
+      console.log(noSpace(this.board))
     },
     activated () {
       window.addEventListener('keydown', this.buttonPressed, false)
@@ -139,7 +151,6 @@
 </script>
 
 <style scoped>
-    @import "../../common/style/main.css";
     #stage {
       position: relative;
       margin: 0 auto; 
@@ -173,16 +184,4 @@
       padding: 0;
     }
 
-    .number-cell {
-      position: relative;
-      width: 100px;
-      height: 100px;
-      border-radius: 6px;
-      font-size: 60px;
-      text-align: center;
-      line-height: 100px;
-      font-family: Arial;
-      font-weight: bold;
-    }
-    
 </style>
