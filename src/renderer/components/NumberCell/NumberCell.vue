@@ -9,7 +9,6 @@ import { getNumberBackgroundColor, getNumberColor } from 'common/js/support.js'
 export default {
   props: ['cellNumber'],
   data: function () {
-    console.log(this.cellNumber)
     return {
       abc: this.cellNumber
     }
